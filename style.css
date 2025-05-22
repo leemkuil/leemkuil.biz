@@ -6,13 +6,21 @@ h1 {
      -webkit-background-clip: text;
     background-clip: text;
     color: transparent;
+    animation: gradient-shift 5s ease infinite;
+    background-size: 300% auto;
     position: absolute;
     text-align: center;
     top: 50%;
     width: 100%;
+    
   }
 @font-face {
     font-family: 'pixelout';
     src: url('/fonts/pixelout.ttf');
     font-display: swap;
+  }
+
+@keyframes gradient-shift {
+    0% { background-position: 0% center; }
+    100% { background-position: 100% center; }
   }
