@@ -8,6 +8,10 @@ h1 {
     color: transparent;
     animation: gradient-shift 5s ease infinite;
     background-size: 300% auto;
+    position: absolute;
+    text-align: center;
+    top: 50%;
+    width: 100%;
   }
 @font-face {
     font-family: 'pixelout';
