@@ -1,19 +1,19 @@
 h1 {
-    font-family: 'pixelout', sans-serif;
-    font-size: clamp(3.5rem, 5vw, 7rem);
-    margin: 0;
-    background: linear-gradient(to right, #4B0082, #E97451, #9CAF88, #E97451, #4B0082);
-     -webkit-background-clip: text;
-    background-clip: text;
-    color: transparent;
-    animation: gradient-shift 5s ease infinite;
-    background-size: 300% auto;
-    position: absolute;
-    text-align: center;
-    top: 50%;
-    width: 100%;
-    
-  }
+  font-family: 'pixelout', sans-serif;
+  font-size: clamp(3.5rem, 5vw, 7rem);
+  margin: 0;
+  background: linear-gradient(to right, #4B0082, #E97451, #9CAF88, #E97451, #4B0082);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  animation: gradient-shift 8s linear infinite; 
+  background-size: 200% auto; 
+  position: absolute;
+  text-align: center;
+  top: 50%;
+  width: 100%;
+}
+
 @font-face {
     font-family: 'pixelout';
     src: url('/fonts/pixelout.ttf');
@@ -21,6 +21,6 @@ h1 {
   }
 
 @keyframes gradient-shift {
-    0% { background-position: 0% center; }
-    100% { background-position: 100% center; }
-  }
+  0% { background-position: 0% center; }
+  100% { background-position: 200% center; } 
+}
