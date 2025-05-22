@@ -3,6 +3,9 @@ h1 {
     font-size: clamp(3.5rem, 5vw, 7rem);
     margin: 0;
     background: linear-gradient(to right, #4B0082, #E97451, #9CAF88);
+     -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
     position: absolute;
     text-align: center;
     top: 50%;
