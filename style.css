@@ -1,4 +1,16 @@
 h1 {
-    font-size: 48px;
-    color: red;
-}
+    font-family: 'pixelout', sans-serif;
+    font-size: clamp(3.5rem, 5vw, 7rem);
+    margin: 0;
+    background: linear-gradient(to right, #f32170, #ff6b08, #cf23cf, #eedd44);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    animation: gradient-shift 5s ease infinite;
+    background-size: 300% auto;
+  }
+@font-face {
+    font-family: 'pixelout';
+    src: url('/fonts/pixelout.ttf');
+    font-display: swap;
+  }
