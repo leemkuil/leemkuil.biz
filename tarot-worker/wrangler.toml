@@ -1,0 +1,45 @@
+name = "tarot-worker"
+main = "src/index.js"
+compatibility_date = "2025-06-11"
+account_id = "95653ecc7b4cb84d1949c5bd667af7e7"
+
+[build]
+upload.format = "modules"
+upload.main = "./src/index.js"
+
+[logpush]
+enabled = true  # Better for debugging API issues
+
+[vars]
+ENVIRONMENT = "production"
+
+[env.production]
+route = "tarot-worker.wfleemkuil.workers.dev"
+workers_dev = false
+vars = { 
+  ENVIRONMENT = "production"
+}
+[env.production.secrets]
+LLM_API_KEY = true  # Secret stored via wrangler secret put
+
+[env.staging]
+workers_dev = true
+vars = {
+  ENVIRONMENT = "staging"
+}
+[env.staging.secrets]
+LLM_API_KEY = true
+
+# New dev environment for local wrangler dev with explicit var (not secret)
+[env.dev]
+workers_dev = true
+vars = {
+  ENVIRONMENT = "development",
+  LLM_API_KEY = "sk-b562a7c3d7494f71b2c533a1b64a2965"  # <-- add your real key here temporarily
+}
+
+[ai]
+enabled = true
+
+[node_compat]
+enabled = true
