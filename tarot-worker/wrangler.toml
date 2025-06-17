@@ -16,7 +16,7 @@ ENVIRONMENT = "production"
 
 [[env.production.bindings]]
 type = "secret_text"
-name = "LLM_API_KEY"
+binding = "LLM_API_KEY"
 
 [env.staging]
 workers_dev = true
@@ -26,7 +26,7 @@ ENVIRONMENT = "staging"
 
 [[env.staging.bindings]]
 type = "secret_text"
-name = "LLM_API_KEY"
+binding = "LLM_API_KEY"
 
 [env.dev]
 workers_dev = true
@@ -37,7 +37,7 @@ ENVIRONMENT = "development"
 
 [[env.dev.bindings]]
 type = "secret_text"
-name = "LLM_API_KEY"
+binding = "LLM_API_KEY"
 
 [env.dev.ai]
 enabled = true
