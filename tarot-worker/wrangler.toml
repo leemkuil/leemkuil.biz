@@ -14,9 +14,8 @@ route = "tarot-worker.wfleemkuil.workers.dev"
 [env.production.vars]
 ENVIRONMENT = "production"
 
-[[env.production.bindings]]
-type = "secret_text"
-binding = "LLM_API_KEY"
+[env.production.secrets]
+LLM_API_KEY = "your-secret-name-here"
 
 [env.staging]
 workers_dev = true
@@ -24,9 +23,8 @@ workers_dev = true
 [env.staging.vars]
 ENVIRONMENT = "staging"
 
-[[env.staging.bindings]]
-type = "secret_text"
-binding = "LLM_API_KEY"
+[env.staging.secrets]
+LLM_API_KEY = "your-secret-name-here"
 
 [env.dev]
 workers_dev = true
@@ -35,9 +33,8 @@ logpush = true
 [env.dev.vars]
 ENVIRONMENT = "development"
 
-[[env.dev.bindings]]
-type = "secret_text"
-binding = "LLM_API_KEY"
+[env.dev.secrets]
+LLM_API_KEY = "your-secret-name-here"
 
 [env.dev.ai]
 enabled = true
