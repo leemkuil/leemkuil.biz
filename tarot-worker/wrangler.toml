@@ -3,12 +3,9 @@ main = "src/index.js"
 compatibility_date = "2025-06-11"
 account_id = "95653ecc7b4cb84d1949c5bd667af7e7"
 
-[build]
-upload.format = "modules"
-upload.main = "./src/index.js"
+nodejs_compat = true
 
-[logpush]
-enabled = true  # Better for debugging API issues
+logpush = true  # Use boolean, not a table
 
 [vars]
 ENVIRONMENT = "production"
@@ -21,7 +18,7 @@ workers_dev = false
 ENVIRONMENT = "production"
 
 [env.production.secrets]
-LLM_API_KEY = true  # Secret stored via wrangler secret put
+LLM_API_KEY = true
 
 [env.staging]
 workers_dev = true
@@ -32,9 +29,9 @@ ENVIRONMENT = "staging"
 [env.staging.secrets]
 LLM_API_KEY = true
 
-# New dev environment for local wrangler dev with explicit var (not secret)
 [env.dev]
 workers_dev = true
+logpush = true  # Add ai equivalent if needed (see below)
 
 [env.dev.vars]
 ENVIRONMENT = "development"
@@ -42,8 +39,8 @@ ENVIRONMENT = "development"
 [env.dev.secrets]
 LLM_API_KEY = true
 
-[ai]
-enabled = true
+[env.dev.ai]
+enabled = true  # Add this because ai isn't inherited
 
-[node_compat]
+[ai]
 enabled = true
