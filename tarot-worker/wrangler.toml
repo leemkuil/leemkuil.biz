@@ -35,9 +35,3 @@ ENVIRONMENT = "development"
 
 [env.dev.secrets]
 LLM_API_KEY = "LLM_API_KEY"
-
-[env.dev.ai]
-enabled = true
-
-[ai]
-enabled = true
