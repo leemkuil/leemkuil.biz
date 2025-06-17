@@ -16,24 +16,28 @@ ENVIRONMENT = "production"
 [env.production]
 route = "tarot-worker.wfleemkuil.workers.dev"
 workers_dev = false
-vars = { 
-  ENVIRONMENT = "production"
-}
+
+[env.production.vars]
+ENVIRONMENT = "production"
+
 [env.production.secrets]
 LLM_API_KEY = true  # Secret stored via wrangler secret put
 
 [env.staging]
 workers_dev = true
-vars = {
-  ENVIRONMENT = "staging"
-}
+
+[env.staging.vars]
+ENVIRONMENT = "staging"
+
 [env.staging.secrets]
 LLM_API_KEY = true
 
 # New dev environment for local wrangler dev with explicit var (not secret)
 [env.dev]
 workers_dev = true
-vars = { ENVIRONMENT = "development" }
+
+[env.dev.vars]
+ENVIRONMENT = "development"
 
 [env.dev.secrets]
 LLM_API_KEY = true
