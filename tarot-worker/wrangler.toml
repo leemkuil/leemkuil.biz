@@ -3,9 +3,7 @@ main = "src/index.js"
 compatibility_date = "2025-06-11"
 account_id = "95653ecc7b4cb84d1949c5bd667af7e7"
 
-nodejs_compat = true
-
-logpush = true  # Use boolean, not a table
+logpush = true
 
 [vars]
 ENVIRONMENT = "production"
@@ -31,7 +29,7 @@ LLM_API_KEY = true
 
 [env.dev]
 workers_dev = true
-logpush = true  # Add ai equivalent if needed (see below)
+logpush = true
 
 [env.dev.vars]
 ENVIRONMENT = "development"
@@ -40,7 +38,7 @@ ENVIRONMENT = "development"
 LLM_API_KEY = true
 
 [env.dev.ai]
-enabled = true  # Add this because ai isn't inherited
+enabled = true
 
 [ai]
 enabled = true
