@@ -2,21 +2,21 @@ name = "tarot-worker"
 main = "src/index.js"
 compatibility_date = "2025-06-11"
 account_id = "95653ecc7b4cb84d1949c5bd667af7e7"
-
 logpush = true
 
 [vars]
 ENVIRONMENT = "production"
 
 [env.production]
-route = "tarot-worker.wfleemkuil.workers.dev"
 workers_dev = false
+route = "tarot-worker.wfleemkuil.workers.dev"
 
 [env.production.vars]
 ENVIRONMENT = "production"
 
-[env.production.secrets]
-LLM_API_KEY = true
+[[env.production.bindings]]
+type = "secret_text"
+name = "LLM_API_KEY"
 
 [env.staging]
 workers_dev = true
@@ -24,8 +24,9 @@ workers_dev = true
 [env.staging.vars]
 ENVIRONMENT = "staging"
 
-[env.staging.secrets]
-LLM_API_KEY = true
+[[env.staging.bindings]]
+type = "secret_text"
+name = "LLM_API_KEY"
 
 [env.dev]
 workers_dev = true
@@ -34,8 +35,9 @@ logpush = true
 [env.dev.vars]
 ENVIRONMENT = "development"
 
-[env.dev.secrets]
-LLM_API_KEY = true
+[[env.dev.bindings]]
+type = "secret_text"
+name = "LLM_API_KEY"
 
 [env.dev.ai]
 enabled = true
