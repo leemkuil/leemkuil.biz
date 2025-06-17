@@ -1,5 +1,8 @@
 export default {
   async fetch(request, env) {
+    console.log("LLM_API_KEY available in env:", !!env.LLM_API_KEY);
+    console.log("env keys:", Object.keys(env));
+    console.log("LLM_API_KEY value:", env.LLM_API_KEY);
     if (request.method === 'OPTIONS') {
       return new Response(null, {
         status: 204,

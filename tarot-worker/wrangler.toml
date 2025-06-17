@@ -33,10 +33,10 @@ LLM_API_KEY = true
 # New dev environment for local wrangler dev with explicit var (not secret)
 [env.dev]
 workers_dev = true
-vars = {
-  ENVIRONMENT = "development",
-  LLM_API_KEY = "sk-b562a7c3d7494f71b2c533a1b64a2965"  # <-- add your real key here temporarily
-}
+vars = { ENVIRONMENT = "development" }
+
+[env.dev.secrets]
+LLM_API_KEY = true
 
 [ai]
 enabled = true
