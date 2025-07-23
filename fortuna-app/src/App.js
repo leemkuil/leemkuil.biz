@@ -5,7 +5,7 @@ import { generateInterpretation } from './services/deepseekApi';
 import './App.css';
 
 function App() {
-  const [darkMode, setDarkMode] = useState(false);
+
   const [gameStarted, setGameStarted] = useState(false);
   const [isInterpreting, setIsInterpreting] = useState(false);
   const [interpretation, setInterpretation] = useState(null);
@@ -84,6 +84,11 @@ useEffect(() => {
     setShowInterpretation(false);
   };
 
+  // Function to go back to the home screen
+  const goBackToHome = () => {
+    setGameStarted(false);
+  };
+
   if (!gameStarted) {
     return (
       <div className="home-screen">
@@ -96,7 +101,8 @@ useEffect(() => {
   }
 
   return (
-    <div className={`app-container ${darkMode ? 'dark-mode' : ''}`}>
+    // Removed dark-mode class toggle as darkMode state is no longer used
+    <div className="app-container"> 
       <CardGameUI 
         allCards={allCards}
         onCardClick={handleCardClick}
@@ -107,11 +113,12 @@ useEffect(() => {
         showSummaries={showSummaries}
         style={{ marginBottom: '-50px' }} // Pull cards up
       />
-      <div className = 'back-button'>
-        <a href="">Back</a>
+      <div className='back-button'>
+        {/* Changed <a> to <button> for accessibility and added onClick handler */}
+        <button onClick={goBackToHome}>Back</button>
       </div>
-      <div className = 'instructions'>
-        {!selectionComplete &&(
+      <div className='instructions'>
+        {!selectionComplete && (
         <h2>Draw Three Cards</h2>)}
       </div>
 
@@ -150,8 +157,6 @@ useEffect(() => {
           </div>
         )}
       </div>
-
-      
     </div>
   );
 }
