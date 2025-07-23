@@ -1,0 +1,406 @@
+/* ==================== */
+/*      BASE STYLES     */
+/* ==================== */
+body {
+  margin: 0;
+  padding: 0;
+  font-family: sans-serif;
+}
+
+/* ==================== */
+/*    FONT DEFINITIONS   */
+/* ==================== */
+@font-face {
+  font-family: 'pixelout';
+  src: url(./fonts/pixelout.ttf);
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'glitch';
+  src: url(./fonts/glitch.ttf);
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'alagard';
+  src: url(./fonts/alagard.ttf);
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'mono';
+  src: url(./fonts/mono.ttf);
+  font-display: swap;
+}
+
+/* ==================== */
+/*    ANIMATIONS        */
+/* ==================== */
+@keyframes gradientAnimation {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+@keyframes gradientFlow {
+  0% {
+    transform: translateX(0%);
+  }
+  100% {
+    transform: translateX(100%); /* Move fully to the right */
+  }
+}
+
+/* ==================== */
+/*    HOME SCREEN       */
+/* ==================== */
+.home-screen {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  background: linear-gradient(45deg,#180172, #000000, #333333, #f9d589);
+  background-size: 300% 300%;
+  animation: gradientAnimation 30s ease infinite;
+  text-align: center;
+  padding: 20px;
+}
+
+.home-title {
+  font-family: 'pixelout', sans-serif;
+  font-size: clamp(3.5rem, 9vw, 12rem);
+  margin: 0;
+  background: linear-gradient(to right, #f32170, #ff6b08, #cf23cf, #eedd44);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  animation: gradientAnimation 8s ease infinite;
+  background-size: 300% auto;
+  transition: animation-duration 0.3s ease;
+}
+
+.home-container:hover .home-title {
+  animation-duration: 3s;
+}
+
+.start-button {
+  font-family: 'glitch';
+  padding: 15px 30px;
+  font-size: 2rem;
+  background-color: transparent;
+  color: rgba(245, 245, 245, 0.774);
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.start-button:hover {
+  transform: scale(1.25);
+  box-shadow: 0 6px 12px rgba(0,0,0,0.3);
+}
+
+/* ==================== */
+/*    MAIN APP LAYOUT   */
+/* ==================== */
+.app-container {
+  position: relative;
+  min-height: 100vh;
+  background: linear-gradient(45deg,#180172, #000000, #333333, #f9d589);
+  background-size: 300% 300%;
+  animation: gradientAnimation 10s ease infinite;
+  padding-bottom: 80px;
+}
+
+.app-container.dark-mode {
+  color: #fff;
+}
+
+.back-button {
+  position: fixed;
+  top: 30px;         /* distance from top of the screen */
+  left: 50px;        /* distance from left of the screen */
+  font-size: 28px;
+  font-family: 'pixelout', sans-serif;
+  text-decoration: none;
+  z-index: 1000;     /* ensure it stays above other elements */
+  background: linear-gradient(to right, #f32170, #ff6b08, #cf23cf, #eedd44);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  animation: gradientAnimation 8s ease infinite;
+  background-size: 300% auto;
+  transition: animation-duration 0.3s ease;
+  opacity:75%;
+}
+
+.instructions {
+  position:relative;
+  text-align: center;
+  bottom:150px;
+  font-size:20px;
+  font-family:'glitch';
+  color:whitesmoke;
+  opacity:50%;
+}
+
+a {
+  color: inherit; /* blue colors for links too */
+  text-decoration: inherit; /* no underline */
+}
+
+/* ==================== */
+/*    CARD STYLES       */
+/* ==================== */
+.card-container {
+  margin-bottom: -50px !important; /* Pull cards up higher */
+}
+
+/* ==================== */
+/*    CARD SUMMARIES    */
+/* ==================== */
+.card-summary {
+  position: absolute;
+  width: 150px;
+  transform: translateX(-50%);
+  background-color: transparent;
+  color: white;
+  padding: 4px;
+  border-radius: 4px;
+  text-align: center;
+  font-size: 16px;
+  font-family: 'alagard';
+  line-height: 1.4;
+  z-index: 5;
+  pointer-events: none;
+}
+
+.card-summary-entering {
+  opacity: 0;
+  transform: translateX(-50%) translateY(100px);
+}
+
+.card-summary-entered {
+  opacity: 1;
+  transform: translateX(-50%) translateY(0);
+}
+
+/* ==================== */
+/*    INTERPRETATION    */
+/* ==================== */
+.interpretation-section {
+  position: relative;
+  margin-top: -275px; /* Pull section up closer to cards */
+  margin-left: 37px;
+  z-index: 50;
+  text-align: left;
+}
+
+.interpret-button {
+  display: block;
+  margin: 30px auto;
+  font-family: 'glitch';
+  padding: 15px 30px;
+  font-size: 2rem;
+  background: rgba(0, 0, 0, 0.5); /* 50% opacity black background */
+  color: rgba(245, 245, 245, 0.8); /* Text at 100% opacity */
+  border: none;
+  border-radius: 8px;
+  cursor: help;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
+}
+
+/* Gradient background on hover using pseudo-element */
+.interpret-button:hover {
+  transform: scale(1.2);
+  color: white; /* Better contrast with gradient */
+}
+
+.interpret-button:hover::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  color: linear-gradient(
+  to right,
+  #f32170,  
+  #ff0066,  
+  #ff6b08,  
+  #ff9500,  
+  #cf23cf,  
+  #8a2be2,  
+  #42aaff,  
+  #eedd44   
+);
+background-size: 400% auto;
+animation: gradientAnimation 8s ease infinite;
+  z-index: -1;
+  border-radius: 6px; 
+}
+
+.interpret-button.interpreting {
+  background: linear-gradient(
+  to right,
+  #f32170,  
+  #ff0066,  
+  #ff6b08,  
+  #ff9500,  
+  #cf23cf,  
+  #8a2be2,  
+  #42aaff,  
+  #eedd44   
+);
+background-size: 400% auto;
+animation: gradientAnimation 8s ease infinite;
+  z-index: -1;
+  border-radius: 6px; 
+  opacity: 0.8;
+  cursor: wait;
+  transform: scale(1.2);
+}
+
+
+.interpretation-container {
+  max-width: 800px;
+  margin: 0 auto 20px;
+  padding: 20px;
+  background: linear-gradient(90deg,#f9d589, #333333, #000000, #180172);
+  background-size: 300% 300%;
+  animation: gradientAnimation 60s ease infinite;
+  border-radius: 8px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+  color: #ffffff;
+  border: 1px solid #eee;
+  backdrop-filter: blur(4px);
+  transform: translateY(35px); /* Pull container up */
+  font-family: 'alagard';
+  font-size: 24px;
+}
+
+.dark-mode .interpretation-container {
+  background-color: rgba(34, 34, 34, 0.95);
+  color: #fff;
+  border: 1px solid #444;
+}
+
+.interpretation-title {
+  margin-bottom: 15px;
+  color: rgb(255, 255, 255);
+  border-bottom: 2px solid #444;
+  padding-bottom: 10px;
+  text-align: center;
+  font-family: 'pixelout';
+  font-size: 50px;
+}
+
+.interpretation-content {
+  line-height: 1.6;
+  white-space: pre-line;
+}
+
+.interpreting-message {
+  text-align: left;
+  padding: 20px;
+  color: #aaa;
+  
+}
+
+.error-message {
+  color: #ff6b6b;
+  padding: 15px;
+  background-color: rgba(255, 0, 0, 0.1);
+  border-radius: 4px;
+  margin-bottom: 20px;
+}
+
+/* ==================== */
+/*    BOTTOM CONTROLS   */
+/* ==================== */
+.bottom-controls {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 15px;
+  text-align: center;
+  background-color: rgba(0, 0, 0, 0.7);
+  backdrop-filter: blur(5px);
+  z-index: 1000;
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  border-top: 1px solid #333;
+}
+
+.bottom-controls button {
+  padding: 10px 20px;
+  font-size: 1rem;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.new-reading-button {
+  background-color: #4CAF50;
+}
+
+.new-reading-button:hover {
+  background-color: #3e8e41;
+}
+
+.reveal-button {
+  background-color: #2196F3;
+}
+
+.reveal-button:hover {
+  background-color: #0b7dda;
+}
+
+/* ==================== */
+/*    RESPONSIVE DESIGN */
+/* ==================== */
+@media (max-width: 768px) {
+  .interpretation-container {
+    width: 95%;
+    margin: 0 auto 15px;
+    padding: 15px;
+  }
+  
+  .bottom-controls {
+    flex-wrap: wrap;
+    gap: 8px;
+    padding: 10px;
+  }
+  
+  .bottom-controls button {
+    padding: 8px 15px;
+    font-size: 0.9rem;
+  }
+  
+  .home-title {
+    font-size: 2rem;
+  }
+  
+  .start-button {
+    padding: 12px 25px;
+    font-size: 1rem;
+  }
+
+  .interpret-button {
+    padding: 10px 20px;
+    font-size: 0.9rem;
+  }
+
+  .card-container {
+    margin-bottom: -30px !important;
+  }
+}

@@ -1,0 +1,19 @@
+name = "tarot-worker"
+main = "src/index.js"
+compatibility_date = "2025-06-11"
+account_id = "95653ecc7b4cb84d1949c5bd667af7e7"
+
+[vars]
+ENVIRONMENT = "production"
+
+[env.production]
+# Let wrangler handle creating the workers.dev subdomain.
+# The URL will be tarot-worker-production.wfleemkuil.workers.dev
+workers_dev = true 
+
+[env.production.vars]
+ENVIRONMENT = "production"
+
+[[env.production.bindings]]
+type = "secret_text"
+name = "LLM_API_KEY"
