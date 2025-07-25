@@ -1,26 +1,86 @@
+/* Basic body styles for full page height and background */
+body {
+    margin: 0;
+    display: flex; /* Use flexbox to center the wrapper */
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh; /* Ensure body takes full viewport height */
+    overflow: hidden; /* Prevents scrollbars if content slightly overflows */
+    background-color: #000; /* Example: Dark background for contrast */
+}
+
+/* Parent Wrapper for H1 and Link Section */
+.main-content-wrapper {
+    position: relative; /* Crucial: This makes it the positioning context for its children */
+    text-align: center; /* Centers inline/inline-block children if any */
+    /* No explicit width/height needed here unless you want a fixed-size container */
+}
+
+/* --- */
+
+/* H1 Styles */
 h1 {
-  font-family: 'pixelout', sans-serif;
-  font-size: clamp(7rem, 10vw, 14rem);
-  margin: 0;
-  background: linear-gradient(to right, #4B0082, #E97451, #9CAF88, #E97451, #4B0082);
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
-  animation: gradient-shift 8s linear infinite; 
-  background-size: 200% auto; 
-  position: absolute;
-  text-align: center;
-  top: 50%;
-  width: 100%;
+    font-family: 'pixelout', sans-serif;
+    font-size: clamp(7rem, 10vw, 14rem);
+    margin: 0; /* Remove default margin */
+    background: linear-gradient(to right, #4B0082, #E97451, #9CAF88, #E97451, #4B0082);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    animation: gradient-shift 8s linear infinite; 
+    background-size: 200% auto; 
+    position: absolute; /* Keep original absolute positioning */
+    top: 50%; /* Position relative to .main-content-wrapper */
+    left: 50%; /* Center horizontally relative to .main-content-wrapper */
+    transform: translate(-50%, -50%); /* Adjust for perfect centering based on its own size */
+    width: 100%; /* Still relative to the wrapper */
+    white-space: nowrap; /* Prevents text from wrapping, crucial for gradient animation */
 }
 
 @font-face {
     font-family: 'pixelout';
     src: url('/fonts/pixelout.ttf');
     font-display: swap;
-  }
+}
+
+@font-face {
+    font-family: 'alagard';
+    src: url('/fonts/alagard.ttf');
+    font-display: swap;
+}
 
 @keyframes gradient-shift {
-  0% { background-position: 0% center; }
-  100% { background-position: 200% center; } 
+    0% { background-position: 0% center; }
+    100% { background-position: 200% center; } 
+}
+
+/* --- */
+
+/* Link Section Styles */
+.link-section {
+    position: absolute; /* Position this relative to the .main-content-wrapper */
+    top: calc(50% + clamp(7rem, 10vw, 14rem) / 2 + 20px); 
+    left: 50%; /* Center horizontally */
+    transform: translateX(-50%); /* Adjust for horizontal centering */
+    width: 100%; /* Or set a fixed width if preferred */
+    display: flex; /* Arrange links in a row */
+    justify-content: center; /* Center the links within the section */
+    gap: 20px; /* Space between individual links */
+    flex-wrap: wrap; /* Allow links to wrap to the next line on smaller screens */
+    padding-top: 20px; /* Additional space above the link section */
+}
+
+.link-item {
+    font-family: 'alagard'; /* Or a different clean font */
+    color: #fff; /* White text for contrast */
+    text-decoration: none; /* Remove underline */
+    padding: 10px 15px;
+    border: 1px solid #E97451; /* Border color from your gradient */
+    border-radius: 5px; /* Slightly rounded corners */
+    transition: background-color 0.3s ease, color 0.3s ease; /* Smooth hover effect */
+}
+
+.link-item:hover {
+    background-color: #E97451;
+    color: #000;
 }
