@@ -13,7 +13,7 @@ body {
 .main-content-wrapper {
     position: relative; /* Crucial: This makes it the positioning context for its children */
     text-align: center; /* Centers inline/inline-block children if any */
-    /* No explicit width/height needed here unless you want a fixed-size container */
+    width: 100vw; /* ✅ FIX: Give the wrapper a width to prevent collapse */
 }
 
 /* --- */
@@ -39,13 +39,13 @@ h1 {
 
 @font-face {
     font-family: 'pixelout';
-    src: url('/fonts/pixelout.ttf');
+    src: url('fonts/pixelout.ttf'); /* ✅ FIX: Changed to a relative path */
     font-display: swap;
 }
 
 @font-face {
     font-family: 'alagard';
-    src: url('/fonts/alagard.ttf');
+    src: url('fonts/alagard.ttf'); /* ✅ FIX: Changed to a relative path */
     font-display: swap;
 }
 
