@@ -1,5 +1,5 @@
 /* ==================== */
-/*      BASE STYLES     */
+/* BASE STYLES     */
 /* ==================== */
 body {
   margin: 0;
@@ -8,7 +8,7 @@ body {
 }
 
 /* ==================== */
-/*    FONT DEFINITIONS   */
+/* FONT DEFINITIONS   */
 /* ==================== */
 @font-face {
   font-family: 'pixelout';
@@ -35,7 +35,7 @@ body {
 }
 
 /* ==================== */
-/*    ANIMATIONS        */
+/* ANIMATIONS        */
 /* ==================== */
 @keyframes gradientAnimation {
   0% { background-position: 0% 50%; }
@@ -53,7 +53,7 @@ body {
 }
 
 /* ==================== */
-/*    HOME SCREEN       */
+/* HOME SCREEN       */
 /* ==================== */
 .home-screen {
   display: flex;
@@ -66,6 +66,7 @@ body {
   animation: gradientAnimation 30s ease infinite;
   text-align: center;
   padding: 20px;
+  box-sizing: border-box; /* Ensure padding is included in element's total width and height */
 }
 
 .home-title {
@@ -79,6 +80,9 @@ body {
   animation: gradientAnimation 8s ease infinite;
   background-size: 300% auto;
   transition: animation-duration 0.3s ease;
+  white-space: nowrap; /* Prevent title from wrapping on smaller screens */
+  overflow: hidden; /* Hide overflow if it still wraps */
+  text-overflow: ellipsis; /* Add ellipsis if text is truncated */
 }
 
 .home-container:hover .home-title {
@@ -103,7 +107,7 @@ body {
 }
 
 /* ==================== */
-/*    MAIN APP LAYOUT   */
+/* MAIN APP LAYOUT   */
 /* ==================== */
 .app-container {
   position: relative;
@@ -111,7 +115,8 @@ body {
   background: linear-gradient(45deg,#180172, #000000, #333333, #f9d589);
   background-size: 300% 300%;
   animation: gradientAnimation 10s ease infinite;
-  padding-bottom: 80px;
+  padding-bottom: 80px; /* Space for bottom controls */
+  box-sizing: border-box;
 }
 
 .app-container.dark-mode {
@@ -134,16 +139,33 @@ body {
   background-size: 300% auto;
   transition: animation-duration 0.3s ease;
   opacity:75%;
+  /* Make the button itself clickable, not just the text */
+  padding: 5px 10px; /* Add padding for easier tapping */
+  border-radius: 5px;
+  background-color: rgba(0, 0, 0, 0.2); /* Slight background for visibility */
+}
+
+.back-button button {
+  background: none;
+  border: none;
+  font: inherit;
+  cursor: pointer;
+  color: inherit; /* Use the gradient text color */
+  padding: 0;
+  margin: 0;
 }
 
 .instructions {
   position:relative;
   text-align: center;
-  bottom:150px;
+  /* Reduced 'bottom' to be less aggressive and prevent overlap */
+  bottom: 20px; 
   font-size:20px;
   font-family:'glitch';
   color:whitesmoke;
   opacity:50%;
+  padding: 0 15px; /* Add horizontal padding to prevent text from touching edges */
+  box-sizing: border-box;
 }
 
 a {
@@ -152,19 +174,21 @@ a {
 }
 
 /* ==================== */
-/*    CARD STYLES       */
+/* CARD STYLES       */
 /* ==================== */
+/* FIX: Removed negative margin. Card positioning is fully controlled by JavaScript. */
+/* This container is a logical wrapper, not a layout controller. */
 .card-container {
-  margin-bottom: -50px !important; /* Pull cards up higher */
+  /* This container's main job is to be a reference for JS positioning */
+  position: relative;
 }
 
 /* ==================== */
-/*    CARD SUMMARIES    */
+/* CARD SUMMARIES    */
 /* ==================== */
 .card-summary {
   position: absolute;
-  width: 150px;
-  transform: translateX(-50%);
+  /* Width and transform are now largely handled by JS for precise positioning */
   background-color: transparent;
   color: white;
   padding: 4px;
@@ -173,8 +197,9 @@ a {
   font-size: 16px;
   font-family: 'alagard';
   line-height: 1.4;
-  z-index: 5;
-  pointer-events: none;
+  z-index: 5; /* Ensure it's above cards but below interpretation */
+  pointer-events: none; /* Allows clicks to pass through to cards below */
+  box-sizing: border-box;
 }
 
 .card-summary-entering {
@@ -188,19 +213,24 @@ a {
 }
 
 /* ==================== */
-/*    INTERPRETATION    */
+/* INTERPRETATION    */
 /* ==================== */
 .interpretation-section {
   position: relative;
-  margin-top: -275px; /* Pull section up closer to cards */
-  margin-left: 37px;
+  /* FIX: Reduced aggressive negative margin-top to prevent layout breaks. */
+  /* The layout will be more stable across different screen heights. */
+  margin-top: -150px;
+  margin-left: 37px; /* Desktop specific margin */
   z-index: 50;
   text-align: left;
+  padding: 0 20px; /* Add horizontal padding for consistency */
+  box-sizing: border-box;
+  width: 100%; /* Ensure it takes full width for responsive centering */
 }
 
 .interpret-button {
   display: block;
-  margin: 30px auto;
+  margin: 30px auto; /* Center button */
   font-family: 'glitch';
   padding: 15px 30px;
   font-size: 2rem;
@@ -213,6 +243,7 @@ a {
   position: relative;
   overflow: hidden;
   z-index: 1;
+  min-width: 150px; /* Ensure a minimum tap target size */
 }
 
 /* Gradient background on hover using pseudo-element */
@@ -228,7 +259,7 @@ a {
   left: 0;
   right: 0;
   bottom: 0;
-  color: linear-gradient(
+  background: linear-gradient(
   to right,
   #f32170,  
   #ff0066,  
@@ -269,7 +300,7 @@ animation: gradientAnimation 8s ease infinite;
 
 .interpretation-container {
   max-width: 800px;
-  margin: 0 auto 20px;
+  margin: 0 auto 20px; /* Center horizontally, maintain bottom margin */
   padding: 20px;
   background: linear-gradient(90deg,#f9d589, #333333, #000000, #180172);
   background-size: 300% 300%;
@@ -282,6 +313,7 @@ animation: gradientAnimation 8s ease infinite;
   transform: translateY(35px); /* Pull container up */
   font-family: 'alagard';
   font-size: 24px;
+  box-sizing: border-box; /* Include padding in width */
 }
 
 .dark-mode .interpretation-container {
@@ -306,10 +338,9 @@ animation: gradientAnimation 8s ease infinite;
 }
 
 .interpreting-message {
-  text-align: left;
+  text-align: center; /* Center message for better mobile experience */
   padding: 20px;
   color: #aaa;
-  
 }
 
 .error-message {
@@ -318,10 +349,11 @@ animation: gradientAnimation 8s ease infinite;
   background-color: rgba(255, 0, 0, 0.1);
   border-radius: 4px;
   margin-bottom: 20px;
+  text-align: center; /* Center error message */
 }
 
 /* ==================== */
-/*    BOTTOM CONTROLS   */
+/* BOTTOM CONTROLS   */
 /* ==================== */
 .bottom-controls {
   position: fixed;
@@ -337,6 +369,8 @@ animation: gradientAnimation 8s ease infinite;
   justify-content: center;
   gap: 10px;
   border-top: 1px solid #333;
+  box-sizing: border-box;
+  width: 100%; /* Ensure it takes full width */
 }
 
 .bottom-controls button {
@@ -347,6 +381,7 @@ animation: gradientAnimation 8s ease infinite;
   border-radius: 4px;
   cursor: pointer;
   transition: all 0.2s ease;
+  min-width: 120px; /* Ensure a minimum tap target size */
 }
 
 .new-reading-button {
@@ -366,41 +401,133 @@ animation: gradientAnimation 8s ease infinite;
 }
 
 /* ==================== */
-/*    RESPONSIVE DESIGN */
+/* RESPONSIVE DESIGN */
 /* ==================== */
+
+/* Tablet and larger mobile screens */
 @media (max-width: 768px) {
+  .home-title {
+    font-size: clamp(2.5rem, 10vw, 6rem); /* Adjust clamp for better mobile scaling */
+    padding: 0 10px; /* Add horizontal padding */
+  }
+
+  .start-button {
+    padding: 12px 25px;
+    font-size: 1.5rem; /* Slightly smaller for mobile */
+  }
+
+  .back-button {
+    top: 15px; /* Move closer to top */
+    left: 15px; /* Move closer to left */
+    font-size: 20px; /* Smaller font size */
+    padding: 8px 12px; /* Adjust padding for mobile tap target */
+  }
+
+  .instructions {
+    font-size: 16px; /* Smaller text */
+    bottom: 10px; /* Adjust position relative to its parent */
+    padding: 0 15px; /* Ensure horizontal padding */
+  }
+
+  .interpretation-section {
+    /* FIX: Reduced negative margin for mobile as well */
+    margin-top: -50px; 
+    margin-left: 0; /* Remove fixed left margin */
+    padding: 0 15px; /* Consistent horizontal padding */
+    text-align: center; /* Center the section title */
+  }
+
+  .interpret-button {
+    padding: 12px 25px;
+    font-size: 1.2rem;
+    margin: 20px auto; /* Adjust margin */
+  }
+
   .interpretation-container {
-    width: 95%;
-    margin: 0 auto 15px;
+    max-width: none; /* Remove max-width for full mobile width */
+    margin: 0 15px 15px; /* Smaller horizontal margin, maintain bottom */
     padding: 15px;
+    font-size: 18px; /* Smaller font size for content */
+  }
+
+  .interpretation-title {
+    font-size: 30px; /* Smaller title */
+    padding-bottom: 5px; /* Reduce padding */
+  }
+
+  .interpretation-content {
+    line-height: 1.5; /* Adjust line height if needed */
   }
   
   .bottom-controls {
-    flex-wrap: wrap;
-    gap: 8px;
+    flex-direction: column; /* Stack buttons vertically */
+    gap: 10px; /* Increase gap for stacked buttons */
     padding: 10px;
   }
   
   .bottom-controls button {
-    padding: 8px 15px;
-    font-size: 0.9rem;
-  }
-  
-  .home-title {
-    font-size: 2rem;
-  }
-  
-  .start-button {
-    padding: 12px 25px;
+    width: 90%; /* Make buttons take more width when stacked */
+    max-width: 300px; /* Limit their width */
+    margin: 0 auto; /* Center them */
+    padding: 12px 20px; /* Make buttons taller for easier tapping */
     font-size: 1rem;
   }
 
-  .interpret-button {
-    padding: 10px 20px;
-    font-size: 0.9rem;
+  /* FIX: Removed conflicting flexbox rules. JavaScript handles layout. */
+  .card-container {
+    padding: 0 10px; /* Keep padding for safety */
   }
 
-  .card-container {
-    margin-bottom: -30px !important;
+  .card-summary {
+    font-size: 14px; /* Smaller text for summaries */
+  }
+}
+
+/* Smaller mobile screens (e.g., iPhone SE, older Androids) */
+@media (max-width: 480px) {
+  .home-title {
+    font-size: clamp(2rem, 12vw, 4rem); /* Even smaller for very small screens */
+  }
+
+  .start-button {
+    font-size: 1.2rem;
+    padding: 10px 20px;
+  }
+
+  .back-button {
+    top: 10px;
+    left: 10px;
+    font-size: 16px;
+    padding: 6px 10px;
+  }
+
+  .instructions {
+    font-size: 14px;
+    bottom: 5px;
+  }
+
+  .interpretation-section {
+    margin-top: -40px; /* Further adjust margin */
+    padding: 0 10px;
+  }
+
+  .interpret-button {
+    font-size: 1rem;
+    padding: 10px 20px;
+  }
+
+  .interpretation-container {
+    margin: 0 10px 10px;
+    padding: 10px;
+    font-size: 16px;
+  }
+
+  .interpretation-title {
+    font-size: 24px;
+  }
+
+  .bottom-controls button {
+    font-size: 0.9rem;
+    padding: 10px 15px;
   }
 }
