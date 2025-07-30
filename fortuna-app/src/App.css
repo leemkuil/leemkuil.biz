@@ -479,7 +479,7 @@ animation: gradientAnimation 8s ease infinite;
   }
 
   .card-summary {
-    font-size: 14px; /* Smaller text for summaries */
+    font-size: 10px; /* Smaller text for summaries */
   }
 }
 

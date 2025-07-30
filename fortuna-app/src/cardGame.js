@@ -27,8 +27,8 @@ const getCardDimensions = () => {
 
   // Adjust card size for smaller screens
   if (viewportWidth < 768) {
-    cardWidth = 100; // Smaller width for mobile
-    cardHeight = 170; // Proportionate height for mobile
+    cardWidth = 80; // Smaller width for mobile
+    cardHeight = 136; // Proportionate height for mobile
   } else if (viewportWidth < 1024) { // For tablets
     cardWidth = 120;
     cardHeight = 200;
