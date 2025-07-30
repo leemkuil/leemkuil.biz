@@ -249,7 +249,7 @@ const useCardGame = (cardsData) => {
         const revealSpacing = Math.max(minRevealSpacing, calculatedRevealSpacing);
 
         const totalRevealWidth = (cardCount * finalCardWidth) + ((cardCount - 1) * revealSpacing);
-        const startRevealX = (viewportWidth - totalRevealWidth) / 2;
+        const startRevealX = (viewportWidth - totalRevealWidth) / 1.8;
 
         const revealedCardsY = viewportHeight * 0.15; // Position revealed cards higher on screen
 
@@ -336,9 +336,9 @@ const CardGameUI = ({
     let summaryOffsetY = actualCardHeight * 0.45;
 
     if (card.status === 'revealed') {
-      summaryOffsetY = actualCardHeight * 0.6;
+      summaryOffsetY = actualCardHeight *.9;
     }
-    const summaryWidth = actualCardWidth * 0.8;
+    const summaryWidth = actualCardWidth;
 
     return {
       left: `${card.position.x + summaryOffsetX}px`,
