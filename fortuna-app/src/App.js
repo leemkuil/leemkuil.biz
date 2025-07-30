@@ -24,7 +24,8 @@ function App() {
     revealed,
     showSummaries,
     cardBackImage,
-    cardWidth
+    cardWidth,
+    cardHeight
   } = useCardGame(cardData);
 
   useEffect(() => {
@@ -108,6 +109,7 @@ useEffect(() => {
         onCardClick={handleCardClick}
         cardBackImage={cardBackImage}
         cardWidth={cardWidth}
+        cardHeight={cardHeight}
         selectionComplete={selectionComplete}
         revealed={revealed}
         showSummaries={showSummaries}

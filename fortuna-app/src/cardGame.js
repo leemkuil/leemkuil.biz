@@ -96,7 +96,7 @@ const useCardGame = (cardsData) => {
 
     // Adjust Y position to place fan lower on the screen for better visibility
     // This value might need tweaking based on your design
-    const fanBaseY = viewportHeight * 0.65; // Place fan around 65% down the viewport
+    const fanBaseY = viewportHeight * 0.4; // Place fan around 65% down the viewport
 
     return positions.map(pos => ({
       x: pos.x + offsetX,
@@ -344,7 +344,7 @@ const CardGameUI = ({
       left: `${card.position.x + summaryOffsetX}px`,
       top: `${card.position.y + summaryOffsetY}px`,
       width: `${summaryWidth}px`,
-      transform: 'translateX(-50%)',
+      
       zIndex: card.status === 'revealed' ? 40 : 35,
     };
   }, [cardWidth, cardHeight]);
@@ -407,20 +407,24 @@ const CardGameUI = ({
             />
 
             {showSummaries && card.isFlipped && (
-             <motion.div
-                initial="entering"
-                animate="entered"
-                variants={{
-                  entering: { opacity: 0, y: 20 },
-                  entered: { opacity: 1, y: 0 }
-                }}
-                transition={{ delay: 0.3 }}
-                className="card-summary"
-                style={getSummaryStyle(card)}
-              >
-                {card.summary}
-              </motion.div>
-            )}
+    <motion.div
+        initial="entering"
+        animate="entered"
+        
+        /* ==================== FIX STARTS HERE ==================== */
+        variants={{
+            entering: { opacity: 0, transform: 'translateX(-50%) translateY(20px)' },
+            entered: { opacity: 1, transform: 'translateX(-50%) translateY(0px)' }
+        }}
+        /* ===================== FIX ENDS HERE ===================== */
+
+        transition={{ delay: 0.3 }}
+        className="card-summary"
+        style={getSummaryStyle(card)}
+    >
+        {card.summary}
+    </motion.div>
+)}
           </React.Fragment>
         ))}
       </AnimatePresence>
